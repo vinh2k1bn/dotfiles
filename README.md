@@ -12,9 +12,9 @@
 - GUI
     - [sway](https://github.com/swaywm/sway) - i3-compatible Wayland compositor.
         - [waybar](https://github.com/Alexays/Waybar) - Highly customizable Wayland bar for Sway and Wlroots based compositors.
-    - [Wofi](https://hg.sr.ht/~scoopta/wofi) - Wofi is a launcher/menu program for wlroots based wayland compositors such as sway.
-    - [Kitty](https://github.com/kovidgoyal/kitty) - Cross-platform, fast, feature-rich, GPU based terminal.
-    - [Flameshot](https://github.com/flameshot-org/flameshot) - Powerful yet simple to use screenshot software.
-    - [Dolphin](https://github.com/KDE/dolphin) - File manager by KDE.
+    - [wofi](https://hg.sr.ht/~scoopta/wofi) - Wofi is a launcher/menu program for wlroots based wayland compositors such as sway.
+    - [kitty](https://github.com/kovidgoyal/kitty) - Cross-platform, fast, feature-rich, GPU based terminal.
+    - [flameshot](https://github.com/flameshot-org/flameshot) - Powerful yet simple to use screenshot software.
+    - [dolphin](https://github.com/KDE/dolphin) - File manager by KDE.
     - [Sweet Theme](https://github.com/EliverLara/Sweet) - Light and dark colorful Gtk3.20+ theme.
     - [Beautyline](https://gitlab.com/garuda-linux/themes-and-settings/artwork/beautyline) - BeautyLine icon theme for Garuda Linux.
