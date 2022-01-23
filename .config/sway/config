@@ -1,0 +1,310 @@
+# XWayland
+xwayland enable
+
+# font for window titles
+font pango:Source Sans Pro 10
+#font pango:DejaVu Sans Mono 8
+
+### Output configuration
+output * bg ~/.local/image/snowy_mountain.jpeg fill
+
+# Automatic workspace switching
+# workspace_auto_back_and_forth yes
+
+# Use Win key
+set $mod Mod4
+
+# Alt key to quick open apps
+set $mod1 Mod1
+
+# use these keys for focus, movement, and resize directions
+set $left   h
+set $down   j
+set $up     k
+set $right  l
+
+# define names for workspaces
+set $ws1    "1:   Chrome "
+set $ws2    "2:   Terminal "
+set $ws3    "3:   Code "
+set $ws4    "4:   Files "
+set $ws5    "5:   Windows "
+set $ws6    "6:   Media "
+set $ws7    "7:   Design "
+set $ws8    "8:   Chat "
+set $ws9    "9:   General "
+set $ws10   "10:   Settings "
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# Touchpads
+input type:touchpad {
+  accel_profile adaptive
+  drag enabled
+  dwt enabled
+  events enabled
+  natural_scroll enabled
+  scroll_method two_finger
+  tap enabled
+}
+
+# control focused window when follows the mouse movements
+# focus_follows_mouse no
+
+# Window title alignment
+title_align center
+
+# window border settings
+default_border          none
+default_floating_border none
+
+# hiding borders adjacent to the screen edges
+hide_edge_borders none
+
+# set popups during fullscreen mode
+popup_during_fullscreen smart
+
+### Key bindings
+
+# start a terminal
+bindsym $mod+Return	exec --no-startup-id kitty
+bindsym $mod+x		exec --no-startup-id kitty
+
+# kill focused window
+bindsym $mod+q kill
+
+# start a program launcher
+# bindsym $mod+d exec --no-startup-id dmenu_run
+bindsym $mod+d exec --no-startup-id wofi --allow-images --gtk-dark --allow-markup --show drun,run
+
+# switching window with win+tab
+# bindsym $mod+Tab exec --no-startup-id rofi -show window
+
+# change focus
+bindsym $mod+$left  focus left
+bindsym $mod+$down  focus down
+bindsym $mod+$up    focus up
+bindsym $mod+$right focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left   focus left
+bindsym $mod+Down   focus down
+bindsym $mod+Up     focus up
+bindsym $mod+Right  focus right
+
+# move focused window
+bindsym $mod+Shift+$left    move left
+bindsym $mod+Shift+$down    move down
+bindsym $mod+Shift+$up      move up
+bindsym $mod+Shift+$right   move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left     move left
+bindsym $mod+Shift+Down     move down
+bindsym $mod+Shift+Up       move up
+bindsym $mod+Shift+Right    move right
+
+# split in horizontal orientation
+bindsym $mod+b splith
+
+# split in vertical orientation
+bindsym $mod+v splitv
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+bindsym $mod+Shift+a focus child
+
+# move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# show the next scratchpad window or hide the focused scratchpad window
+bindsym $mod+minus scratchpad show
+
+# move focused floating window to the center of all outputs
+bindsym $mod+Shift+b move absolute position center
+
+# move focused floating window to the current position of the cursor
+bindsym $mod+Shift+m move position mouse
+
+# set a window to stick to the glass
+bindsym $mod+Shift+s sticky toggle
+
+# sticky preview for media
+bindsym $mod+Shift+p fullscreen disable; floating enable; resize set 350 px 197 px; sticky enable; move window to position 1006 px 537 px
+
+# shortcut to change window border
+bindsym $mod+t border normal    0
+bindsym $mod+y border pixel     1
+bindsym $mod+u border none
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+# quick open apps
+bindsym $mod1+1 workspace $ws1; exec --no-startup-id google-chrome-stable
+bindsym $mod1+2 workspace $ws2; exec --no-startup-id kitty 
+bindsym $mod1+3 workspace $ws3; exec --no-startup-id code
+bindsym $mod1+4 workspace $ws4; exec --no-startup-id dolphin
+bindsym $mod1+5 workspace $ws5; exec --no-startup-id vmware
+
+# shortcut applications
+
+# Screenshot
+bindsym Print exec --no-startup-id flameshot gui
+
+# Brightness
+bindsym --locked XF86MonBrightnessDown	exec brightnessctl set 1%-
+bindsym --locked XF86MonBrightnessUp	exec brightnessctl set 1%+
+
+# volume
+bindsym --locked XF86AudioLowerVolume    exec --no-startup-id amixer set Master 2%-
+bindsym --locked XF86AudioRaiseVolume    exec --no-startup-id amixer set Master 2%+
+bindsym --locked XF86AudioMute           exec --no-startup-id amixer set Master toggle
+ 
+# Media player controls
+bindsym --locked XF86AudioPlay   exec playerctl play-pause
+bindsym --locked XF86AudioPause  exec playerctl play-pause
+bindsym --locked XF86AudioNext   exec playerctl next
+bindsym --locked XF86AudioPrev   exec playerctl previous
+
+
+# notification
+# bindsym Ctrl+space              exec --no-startup-id dunstctl close
+# bindsym Ctrl+Shift+space        exec --no-startup-id dunstctl close-all
+# bindsym Ctrl+grave              exec --no-startup-id dunstctl history-pop
+# bindsym Ctrl+Shift+period       exec --no-startup-id dunstctl context
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace 
+bindsym $mod+Shift+r restart
+
+# manage i3 session
+bindsym $mod+Shift+e exec --no-startup-id swaynag -t warning -f "pango:Hack 9" \
+	-m "Do you really want to exit?" \
+	-B "    Exit " "swaymsg exit" \
+	-B "    Lock " 'swaylock -f -c 000000 -i "$image" --fade-in 0.5 --grace 15 --effect-blur 7x5 --effect-vignette 0.5:0.5' \
+	-B "    Reboot " "pkill i3-nagbar && reboot" \
+	-B "    Shutdown " "pkill i3-nagbar && shutdown -h now"
+
+# resize window
+
+bindsym $mod+r mode "  "
+mode "  " {
+    # pressing left and up will shrink the window's width and height
+    # pressing right and down will grow the window's width and height
+    bindsym $left   resize shrink width     5 px
+    bindsym $down   resize grow height      5 px
+    bindsym $up     resize shrink height    5 px
+    bindsym $right  resize grow width       5 px
+
+    # same bindings, but for the arrow keys
+    bindsym Left    resize shrink width     5 px
+    bindsym Down    resize grow height      5 px
+    bindsym Up      resize shrink height    5 px
+    bindsym Right   resize grow width       5 px
+
+    # back to normal: Enter or win+r or Esc
+    bindsym Return mode "default"
+    bindsym $mod+r mode "default"
+    bindsym Escape mode "default"
+}
+
+# set specific windows to floating mode
+for_window [window_role="app"]                      floating enable
+for_window [window_role="pop-up"]                   floating enable
+for_window [window_role="task_dialog"]              floating enable
+for_window [title="Preferences$"]                   floating enable
+for_window [title="gscreenshot"]                    floating enable
+
+for_window [title="^Picture in picture$"]\
+	floating enable; sticky enable; resize set 640 px 360 px; move window to position 1280 px 690 px
+
+
+# class                 border  backgr. text    indicator child_border
+client.focused          #2b83a6 #2b83a6 #ffffff #dddddd   #2b83a6
+client.focused_inactive #212121 #212121 #86888c #292d2e   #5a5a5a
+client.unfocused        #212121 #212121 #86888c #292d2e   #5a5a5a
+client.urgent           #d64e4e #d64e4e #ffffff #d64e4e   #d64e4e
+client.placeholder      #212121 #0c0c0c #ffffff #212121   #262626
+client.background       #212121
+
+# gaps
+smart_gaps on
+gaps inner 8
+gaps outer 2
+### swaybar
+bar {
+    swaybar_command waybar
+}
+
+### local config file
+# include local.conf
+
+### Startup
+
+exec_always "systemctl --user import-environment"
+# exec_always --no-startup-id flameshot &
+exec --no-startup-id libinput-gestures-setup start
+exec mako
+exec blueman-applet
+exec nm-applet --indicator
+exec ibus-daemon -drx
+# exec_always --no-startup-id picom
+# exec wlsunset
+# exec wluma
+# exec swayidle -w \
+#          timeout 300  'swaylock -f -c 000000 -i "$image" --fade-in 0.5 --grace 15 --effect-blur 7x5 --effect-vignette 0.5:0.5' \
+#          timeout 600  'swaymsg "output * dpms off"' \
+#               resume  'swaymsg "output * dpms on"' \
+#          before-sleep 'swaylock -f -c 000000 -i "$image" --fade-in 0.5 --grace 15 --effect-blur 7x5 --effect-vignette 0.5:0.5'
+# exec udiskie --automount --tray --notify --appindicator
+# exec wl-paste -t text --watch clipman store
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec hash dbus-update-activation-environment 2>/dev/null && \
+     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+
+#################################################################
+# System config
+#################################################################
+
+include /etc/sway/config.d/*
