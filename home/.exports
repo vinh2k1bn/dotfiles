@@ -1,0 +1,23 @@
+## ibus-bamboo
+export GTK_IM_MODULE=ibus
+export QT_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT4_IM_MODULE=ibus
+export CLUTTER_IM_MODULE=ibus
+
+## nnn - terminal file manager
+# fix preview-tui not rendering correctly
+export PAGER="less -R"
+export NNN_COLORS='1234'
+export NNN_BMS="d:~/Downloads;D:~/Documents;t:~/Temporary" # Bookmarks
+export NNN_FCOLORS="03040601000205f7d204d9f7" # File colors
+export NNN_PLUG='f:finder;o:fzopen;p:preview-tui;d:diffs;t:preview-tabbed;v:imgview'
+export NNN_TRASH=1 # Trash instead of delete the files
+export NNN_FIFO=/tmp/nnn.f
+
+## ripgrep.
+export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/ripgreprc"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
+## fzf
+export BAT_THEME="Visual Studio Dark+"
