@@ -1,3 +1,5 @@
+#!/bin/bash
+
 function installOhMyZsh() {
     local URL='https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh'
     banner "I will install Oh My Zsh and plugins"
