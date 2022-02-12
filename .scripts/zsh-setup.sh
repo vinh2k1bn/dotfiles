@@ -2,7 +2,7 @@
 
 function installOhMyZsh() {
     local URL='https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh'
-    banner "I will install Oh My Zsh and plugins"
+    echo "I will install Oh My Zsh and plugins"
 
     yes | sudo -u "$SUDO_USER" -- sh -c "$(curl -fsSL $URL)"
     sudo -u "$SUDO_USER" -- sh -c "
