@@ -1,15 +1,9 @@
-# XWayland
-xwayland enable
+# Output configuration
+set $image ~/Pictures/profile/snowy_mountain_1920x1080.jpg
 
-# font for window titles
-font pango:Source Sans Pro 10
-#font pango:DejaVu Sans Mono 8
+# Your preferred terminal emulator
+set $term kitty
 
-### Output configuration
-output * bg ~/.local/image/snowy_mountain.jpeg fill
-
-# Automatic workspace switching
-# workspace_auto_back_and_forth yes
 
 # Use Win key
 set $mod Mod4
@@ -34,6 +28,19 @@ set $ws7    "7:   Design "
 set $ws8    "8:   Chat "
 set $ws9    "9:   General "
 set $ws10   "10:   Settings "
+
+# XWayland
+xwayland enable
+
+# Background
+output * bg $image fill
+
+# Automatic workspace switching
+# workspace_auto_back_and_forth yes
+
+# font for window titles
+font pango:Source Sans Pro 10
+#font pango:DejaVu Sans Mono 8
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -68,8 +75,8 @@ popup_during_fullscreen smart
 ### Key bindings
 
 # start a terminal
-bindsym $mod+Return	exec --no-startup-id kitty
-bindsym $mod+x		exec --no-startup-id kitty
+bindsym $mod+Return	exec --no-startup-id $term
+bindsym $mod+x		exec --no-startup-id $term
 
 # kill focused window
 bindsym $mod+q kill
@@ -180,7 +187,7 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 
 # quick open apps
 bindsym $mod1+1 workspace $ws1; exec --no-startup-id google-chrome-stable
-bindsym $mod1+2 workspace $ws2; exec --no-startup-id kitty 
+bindsym $mod1+2 workspace $ws2; exec --no-startup-id $term
 bindsym $mod1+3 workspace $ws3; exec --no-startup-id code
 bindsym $mod1+4 workspace $ws4; exec --no-startup-id dolphin
 bindsym $mod1+5 workspace $ws5; exec --no-startup-id vmware
@@ -191,8 +198,8 @@ bindsym $mod1+5 workspace $ws5; exec --no-startup-id vmware
 bindsym Print exec --no-startup-id flameshot gui
 
 # Brightness
-bindsym --locked XF86MonBrightnessDown	exec brightnessctl set 1%-
-bindsym --locked XF86MonBrightnessUp	exec brightnessctl set 1%+
+bindsym --locked XF86MonBrightnessDown  exec brightnessctl set 1%-
+bindsym --locked XF86MonBrightnessUp    exec brightnessctl set 1%+
 
 # volume
 bindsym --locked XF86AudioLowerVolume    exec --no-startup-id amixer set Master 2%-
@@ -215,16 +222,12 @@ bindsym --locked XF86AudioPrev   exec playerctl previous
 # reload the configuration file
 bindsym $mod+Shift+c reload
 
-# restart i3 inplace 
-bindsym $mod+Shift+r restart
-
-# manage i3 session
+# manage sway session
 bindsym $mod+Shift+e exec --no-startup-id swaynag -t warning -f "pango:Hack 9" \
 	-m "Do you really want to exit?" \
-	-B "    Exit " "swaymsg exit" \
-	-B "    Lock " 'swaylock -f -c 000000 -i "$image" --fade-in 0.5 --grace 15 --effect-blur 7x5 --effect-vignette 0.5:0.5' \
-	-B "    Reboot " "pkill i3-nagbar && reboot" \
-	-B "    Shutdown " "pkill i3-nagbar && shutdown -h now"
+	-B "    Exit " 'swaymsg exit' \
+	-B "    Reboot " 'reboot' \
+	-B "    Shutdown " 'shutdown -h now'
 
 # resize window
 
